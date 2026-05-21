@@ -1,4 +1,4 @@
-name: kernel-kit-k6.18
+name: kernel-kit-k7.0
 
 on:
   schedule:
@@ -15,9 +15,7 @@ jobs:
     strategy:
       matrix:
         include:
-          - kernel-kit-config: 6.18.x-x86
-            image: debian:trixie-slim
-          - kernel-kit-config: 6.18.x-x86_64
+          - kernel-kit-config: 7.0.x-x86_64
             image: debian:trixie-slim
     steps:
       - uses: actions/checkout@v6
@@ -50,7 +48,7 @@ jobs:
     continue-on-error: true
     strategy:
       matrix:
-        kernel-kit-config: [6.18.x-x86, 6.18.x-x86_64]
+        kernel-kit-config: [7.0.x-x86_64]
     steps:
       - uses: actions/checkout@v6
       - name: Install dependencies
@@ -78,17 +76,11 @@ jobs:
     strategy:
       matrix:
         include:
-          - kversion: 6.18
+          - kversion: 7.0
             arch: x86_64
             dirs: 
-          - kversion: 6.18
+          - kversion: 7.0
             arch: x86_64
-            dirs: -usrmerge
-          - kversion: 6.18
-            arch: x86
-            dirs: 
-          - kversion: 6.18
-            arch: x86
             dirs: -usrmerge
     steps:
       - name: Get current date
